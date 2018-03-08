@@ -1,9 +1,9 @@
-/[Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
-/Assets/AssetStoreTools*
+/Clash of Stars/[Ll]ibrary/
+/Clash of Stars/[Tt]emp/
+/Clash of Stars/[Oo]bj/
+/Clash of Stars/[Bb]uild/
+/Clash of Stars/[Bb]uilds/
+/Clash of Stars/Assets/AssetStoreTools*
 
 # Visual Studio 2015 cache directory
 /.vs/
@@ -34,4 +34,4 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
-/Releases/Android/*
+/Clash of Stars/Releases/Android/*
