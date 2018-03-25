@@ -13,8 +13,4 @@ public class Player : NetworkBehaviour {
 
 	}
 	
-	void Update () 
-	{
-		
-	}
 }
