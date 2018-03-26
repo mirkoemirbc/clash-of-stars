@@ -31,7 +31,7 @@ public class ClickToMove : MonoBehaviour {
 	{
 		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 		RaycastHit hit;
-		if (Input.GetButtonDown ("Fire1")) 
+		if (Input.GetButtonDown ("Fire2")) 
 		{
 			fireClicked = true;
 			if (Physics.Raycast(ray, out hit, 1000f))
@@ -47,7 +47,7 @@ public class ClickToMove : MonoBehaviour {
 					walking = true;
 					enemyClicked = false;
 					navMeshAgent.destination = hit.point;
-					navMeshAgent.Resume ();
+					navMeshAgent.isStopped = false;
 				}
 			}
 		}
@@ -60,7 +60,7 @@ public class ClickToMove : MonoBehaviour {
 		if (fireClicked) {
 			if (Vector3.Distance(transform.position, navMeshAgent.destination) <= navMeshAgent.stoppingDistance) {
 				walking = false;
-				navMeshAgent.Stop ();
+				navMeshAgent.isStopped = true;
 				fireClicked = false;
 				Debug.Log ("Stopped" + navMeshAgent.transform.position);
 				transform.position = navMeshAgent.destination;
@@ -79,7 +79,7 @@ public class ClickToMove : MonoBehaviour {
 		navMeshAgent.destination = targetedEnemy.position;
 		if (navMeshAgent.remainingDistance >= shootDistance) {
 			Debug.Log (navMeshAgent.remainingDistance.ToString () + " -> " + shootDistance.ToString ());
-			navMeshAgent.Resume();
+			navMeshAgent.isStopped = false;
 			walking = true;
 		}
 
@@ -92,7 +92,7 @@ public class ClickToMove : MonoBehaviour {
 				nextFire = Time.time + shootRate;
 				//shootingScript.Shoot(dirToShoot);
 			}
-			navMeshAgent.Stop ();
+			navMeshAgent.isStopped = true;
 			walking = false;
 		}
 	}
