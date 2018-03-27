@@ -17,13 +17,11 @@ public class ClickToMove : MonoBehaviour {
 	private bool fireClicked = false;
 	private bool enemyClicked;
 	private float nextFire;
-	private CursorBehaviour mouseCursor;
 
 	// Use this for initialization
 	void Awake () 
 	{
 		navMeshAgent = GetComponent<NavMeshAgent> ();
-		mouseCursor = GetComponent <CursorBehaviour> ();
 	}
 
 	// Update is called once per frame
@@ -31,7 +29,7 @@ public class ClickToMove : MonoBehaviour {
 	{
 		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 		RaycastHit hit;
-		if (Input.GetButtonDown ("Fire2")) 
+		if (Input.GetMouseButtonDown(1)) 
 		{
 			fireClicked = true;
 			if (Physics.Raycast(ray, out hit, 1000f))
@@ -62,10 +60,12 @@ public class ClickToMove : MonoBehaviour {
 				walking = false;
 				navMeshAgent.isStopped = true;
 				fireClicked = false;
-				Debug.Log ("Stopped" + navMeshAgent.transform.position);
+				if (DebugBehaviour.debuggingStatus)
+					Debug.Log ("Stopped" + navMeshAgent.transform.position);
 				transform.position = navMeshAgent.destination;
 			} else {
-				Debug.Log ("Walking" + navMeshAgent.transform.position + navMeshAgent.destination);
+				if (DebugBehaviour.debuggingStatus)
+					Debug.Log ("Walking" + navMeshAgent.transform.position + navMeshAgent.destination);
 				walking = true;
 			}
 		}
@@ -78,7 +78,8 @@ public class ClickToMove : MonoBehaviour {
 
 		navMeshAgent.destination = targetedEnemy.position;
 		if (navMeshAgent.remainingDistance >= shootDistance) {
-			Debug.Log (navMeshAgent.remainingDistance.ToString () + " -> " + shootDistance.ToString ());
+			if (DebugBehaviour.debuggingStatus)
+				Debug.Log (navMeshAgent.remainingDistance.ToString () + " -> " + shootDistance.ToString ());
 			navMeshAgent.isStopped = false;
 			walking = true;
 		}
