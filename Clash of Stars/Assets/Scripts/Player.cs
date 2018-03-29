@@ -10,7 +10,6 @@ public class Player : NetworkBehaviour {
 	void Start () 
 	{
 		myCamera.SetActive (isLocalPlayer);
-
 	}
 	
 }
