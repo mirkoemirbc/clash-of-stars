@@ -54,7 +54,7 @@ public class MinionSpawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		clockTime.GetComponent<GUIText>().text = "Time: " + Time.realtimeSinceStartup.ToString ("F1");
+		//clockTime.GetComponent<GUIText>().text = "Time: " + Time.realtimeSinceStartup.ToString ("F1");
 	}
 
 	private IEnumerator WaveSpawner (float colddown)

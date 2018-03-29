@@ -15,7 +15,8 @@ public class CursorBehaviour : MonoBehaviour
 
 	void Start ()
 	{
-		SetCursorTexture (cursorList[0].cursorTexture);
+		if (cursorList.Count > 0) 
+			SetCursorTexture (cursorList[0].cursorTexture);
 	}
 
 	void Update ()
@@ -27,7 +28,8 @@ public class CursorBehaviour : MonoBehaviour
 		{
 			SetCursor (hit.collider.tag);
 		}
-		SetCursorTexture (cursorList[0].cursorTexture);			
+		if (cursorList.Count > 0)
+			SetCursorTexture (cursorList[0].cursorTexture);			
 	}
 
 	public void SetCursor (string tag) 
