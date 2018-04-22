@@ -57,11 +57,11 @@ public class ClickToMove : MonoBehaviour {
 					walking = false;
 					navMeshAgent.isStopped = true;
 					fireClicked = false;
-					if (DebugBehaviour.debuggingStatus)
+					if (DebugBehaviour.debuggingStatus == DebugTarget.MOVEMENT || DebugBehaviour.debuggingStatus == DebugTarget.ALL)
 						Debug.Log ("Stopped" + navMeshAgent.transform.position);
 					transform.position = navMeshAgent.destination;
 				} else {
-					if (DebugBehaviour.debuggingStatus)
+					if (DebugBehaviour.debuggingStatus == DebugTarget.MOVEMENT || DebugBehaviour.debuggingStatus == DebugTarget.ALL)
 						Debug.Log ("Walking" + navMeshAgent.transform.position + navMeshAgent.destination);
 					walking = true;
 				}
@@ -76,7 +76,7 @@ public class ClickToMove : MonoBehaviour {
 
 		navMeshAgent.destination = targetedEnemy.position;
 		if (navMeshAgent.remainingDistance >= shootDistance) {
-			if (DebugBehaviour.debuggingStatus)
+			if (DebugBehaviour.debuggingStatus == DebugTarget.MOVEMENT || DebugBehaviour.debuggingStatus == DebugTarget.ALL)
 				Debug.Log (navMeshAgent.remainingDistance.ToString () + " -> " + shootDistance.ToString ());
 			navMeshAgent.isStopped = false;
 			walking = true;
