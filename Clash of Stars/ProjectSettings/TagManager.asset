@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy Champion
+  - Enemy Ship
+  - Allied Champion
+  - Allied Ship
   layers:
   - Default
   - TransparentFX
